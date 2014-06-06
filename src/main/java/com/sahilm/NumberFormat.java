@@ -7,6 +7,7 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Locale;
 
 public class NumberFormat {
     private static final String MARATHI_SPELLOUT_RULES = loadSpelloutRules(NumberFormat.class.getResource("/MarathiSpelloutRules.txt"));
@@ -23,8 +24,18 @@ public class NumberFormat {
         }
     }
 
-    public static String spellOutInMarathi(BigDecimal number) {
+    private static String spellOutInMarathi(BigDecimal number) {
         RuleBasedNumberFormat formatter = new RuleBasedNumberFormat(MARATHI_SPELLOUT_RULES);
         return formatter.format(number);
+    }
+
+    private static String formatInMarathi(BigDecimal number) {
+        java.text.NumberFormat formatter = java.text.NumberFormat.getInstance(new Locale("hi", "IN"));
+        formatter.setGroupingUsed(false);
+        return formatter.format(number);
+    }
+
+    public static String format(BigDecimal number) {
+        return formatInMarathi(number) + ", " + spellOutInMarathi(number);
     }
 }
