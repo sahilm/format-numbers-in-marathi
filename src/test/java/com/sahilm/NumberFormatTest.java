@@ -17,6 +17,9 @@ public class NumberFormatTest {
         assertFormatOf(1218, "१२१८, एक हज़ार दोनशे अठरा");
         assertFormatOf(0, "०, शून्य");
         assertFormatOf(100, "१००, शंभर");
+        assertFormatOf(101, "१०१, एकशे एक");
+        assertFormatOf(111, "१११, एकशे अकरा");
+        assertFormatOf(200, "२००, दोनशे");
         assertFormatOf(-78, "-७८, ऋण अठ्ठ्याहत्तर");
         assertFormatOf(new BigDecimal("18.9139"), "१८.९१४, अठरा दशमलव नऊ एक तीन नऊ");
         assertFormatOf(new BigDecimal("-55.75"), "-५५.७५, ऋण पंचावन्न दशमलव सात पाच");
